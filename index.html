@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>六年級成語達人</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, sans-serif; }
+    .option-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .option-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; animation: fall 3s linear forwards; }
+    @keyframes fall { to { transform: translateY(800px) rotate(720deg); opacity: 0; } }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-rose-50 min-h-screen pb-12">
+  <div class="max-w-2xl mx-auto p-4">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-bold text-indigo-700">🀄 六年級成語達人</h1>
+      <div class="flex gap-3" id="header-buttons"></div>
+    </div>
+    <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl p-8 min-h-[520px]"></div>
+  </div>
+
+  <script>
+    let allQuestions = [];
+    let questions = [];
+    let wrongQuestions = [];
+    let current = 0;
+    let score = 0;
+    let timerInterval;
+    let timeLeft = 30;
+    let currentUnit = null;
+
+    async function loadQuestions() {
+      try {
+        const res = await fetch('questions-unit.json');
+        allQuestions = await res.json();
+        showWelcomeScreen();
+      } catch (e) {
+        document.getElementById('quiz-container').innerHTML = `<div class="text-center py-20 text-red-600"><p class="text-2xl">❌ 無法載入題目</p></div>`;
+      }
+    }
+
+    function showWelcomeScreen() {
+      updateHeaderButtons(true);
+      document.getElementById('quiz-container').innerHTML = `
+        <div class="text-center py-16">
+          <div class="text-7xl mb-6">📖</div>
+          <h1 class="text-4xl font-bold text-indigo-700 mb-3">六年級成語達人</h1>
+          <p class="text-xl text-gray-600 mb-10">注音 + 故事成語 綜合練習</p>
+          <button onclick="showUnitSelection()" class="w-full py-7 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-medium rounded-3xl shadow-xl">開始測驗</button>
+        </div>
+      `;
+    }
+
+    function updateHeaderButtons(isMainPage) {
+      const container = document.getElementById('header-buttons');
+      if (isMainPage) {
+        container.innerHTML = `
+          <button onclick="showLeaderboard()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">排行榜</button>
+          <button onclick="exitProgram()" class="px-5 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50">結束</button>
+        `;
+      } else {
+        container.innerHTML = `
+          <button onclick="showLeaderboard()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">排行榜</button>
+          <button onclick="goHome()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">← 回主頁</button>
+        `;
+      }
+    }
+
+    function exitProgram() { if (confirm("確定結束程式嗎？")) window.close(); }
+    function goHome() { if (confirm("返回主頁？")) location.reload(); }
+
+    function showUnitSelection() {
+      updateHeaderButtons(true);
+      let html = `<div class="text-center py-8"><h2 class="text-3xl font-bold mb-8">請選擇測驗單元</h2>`;
+      html += `<div class="max-w-xs mx-auto mb-8"><div class="flex gap-3">
+        <input id="unitInput" type="number" min="1" max="40" placeholder="輸入單元" class="flex-1 px-5 py-4 border border-gray-300 rounded-2xl text-center text-xl">
+        <button onclick="startCustomUnit()" class="px-8 bg-indigo-600 text-white rounded-2xl">開始</button>
+      </div></div>`;
+      html += `<div class="grid grid-cols-5 gap-3">`;
+      for (let i = 1; i <= 40; i++) {
+        html += `<button onclick="startUnit(${i})" class="py-5 bg-white hover:bg-indigo-50 border border-gray-200 rounded-2xl font-medium">單元 ${i.toString().padStart(2, '0')}</button>`;
+      }
+      html += `</div></div>`;
+      document.getElementById('quiz-container').innerHTML = html;
+    }
+
+    function startCustomUnit() {
+      const num = parseInt(document.getElementById('unitInput').value);
+      if (isNaN(num) || num < 1 || num > 40) return alert("請輸入 1~40 的單元！");
+      startUnit(num);
+    }
+
+    function startUnit(unitNumber) {
+      currentUnit = unitNumber;
+      questions = shuffle(allQuestions.filter(q => q.unit === unitNumber));
+      if (questions.length === 0) return alert("此單元尚無題目");
+      current = 0; score = 0; wrongQuestions = [];
+      updateHeaderButtons(false);
+      loadQuestion();
+    }
+
+    function startAllUnits() {
+      currentUnit = null;
+      questions = shuffle([...allQuestions]);
+      current = 0; score = 0; wrongQuestions = [];
+      updateHeaderButtons(false);
+      loadQuestion();
+    }
+
+    function shuffle(array) {
+      const newArray = [...array];
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      }
+      return newArray;
+    }
+
+    function getShuffledOptions(q) {
+      const shuffled = shuffle([...q.options]);
+      const correctIndex = shuffled.indexOf(q.options[q.answer]);
+      return { shuffledOptions: shuffled, correctIndex };
+    }
+
+    function playSound(isCorrect) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = isCorrect ? 'sine' : 'sawtooth';
+        osc.frequency.setValueAtTime(isCorrect ? 880 : 420, ctx.currentTime);
+        gain.gain.setValueAtTime(0.4, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (isCorrect ? 0.5 : 0.7));
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(); osc.stop(ctx.currentTime + (isCorrect ? 0.6 : 0.9));
+      } catch(e) {}
+    }
+
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55e'][Math.floor(Math.random()*5)];
+        c.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 7000);
+      }
+    }
+
+    function loadQuestion() {
+      clearInterval(timerInterval);
+      const q = questions[current];
+      const { shuffledOptions, correctIndex } = getShuffledOptions(q);
+      q.currentCorrectIndex = correctIndex;
+
+      document.getElementById('quiz-container').innerHTML = `
+        <div class="flex justify-between mb-6 text-sm font-medium">
+          <span>單元 ${q.unit} • 第 <span id="q-number">${current+1}</span> / ${questions.length}</span>
+          <span id="timer" class="font-mono text-orange-600">30</span>
+        </div>
+        <div class="h-2 bg-gray-100 rounded-full mb-8 overflow-hidden">
+          <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all" style="width:0%"></div>
+        </div>
+        <div class="text-2xl font-medium leading-relaxed mb-10">${current + 1}. ${q.question}</div>
+        <div class="grid grid-cols-1 gap-4">
+          ${shuffledOptions.map((opt,i) => `
+            <button onclick="selectAnswer(${i})" class="option-btn w-full text-left px-8 py-6 bg-gradient-to-r from-gray-50 to-white hover:from-indigo-50 border border-gray-200 rounded-3xl text-xl shadow">
+              ${String.fromCharCode(65+i)}. ${opt}
+            </button>`).join('')}
+        </div>
+        <div id="feedback" class="mt-10 hidden"></div>
+        <button onclick="goHome()" class="mt-6 w-full py-3 text-gray-500 hover:text-red-600">← 中途返回主頁</button>
+      `;
+      updateProgress();
+      startTimer();   // ← 確保每次載入題目都會啟動計時器
+    }
+
+    window.selectAnswer = function(selected) {
+      clearInterval(timerInterval);
+      const q = questions[current];
+      const isCorrect = selected === q.currentCorrectIndex;
+      if (isCorrect) { score++; playSound(true); createConfetti(); }
+      else { wrongQuestions.push(q); playSound(false); }
+
+      const feedback = document.getElementById('feedback');
+      feedback.classList.remove('hidden');
+      feedback.innerHTML = `
+        <div class="p-8 rounded-3xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+          <p class="text-3xl font-bold mb-4">${isCorrect ? '🎉 答對了！' : '😔 答錯了'}</p>
+          <p class="text-xl">${q.explanation}</p>
+        </div>
+        <button onclick="nextQuestion()" class="mt-8 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-3xl text-2xl font-medium">
+          ${current < questions.length-1 ? '下一題 →' : '查看成績'}
+        </button>
+      `;
+      document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+    };
+
+    window.nextQuestion = function(timeUp = false) {
+      if (timeUp && !wrongQuestions.some(w => w.id === questions[current].id)) wrongQuestions.push(questions[current]);
+      current++;
+      if (current < questions.length) loadQuestion();
+      else showResult();
+    };
+
+    function startTimer() {
+      timeLeft = 30;
+      const timerEl = document.getElementById('timer');
+      if (timerEl) timerEl.textContent = timeLeft;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timerEl) timerEl.textContent = timeLeft;
+        if (timeLeft <= 5 && timerEl) timerEl.classList.add('text-red-600');
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          nextQuestion(true);
+        }
+      }, 1000);
+    }
+
+    function updateProgress() {
+      const progress = (current / questions.length) * 100;
+      const bar = document.getElementById('progress-bar');
+      if (bar) bar.style.width = `${progress}%`;
+      const scoreEl = document.getElementById('current-score');
+      if (scoreEl) scoreEl.textContent = score;
+    }
+
+    function saveHighScore(scorePercent) {
+      const highScores = JSON.parse(localStorage.getItem('idiomHighScores') || '[]');
+      highScores.push({ score: scorePercent, unit: currentUnit || '全', date: new Date().toLocaleDateString('zh-TW') });
+      highScores.sort((a, b) => b.score - a.score);
+      localStorage.setItem('idiomHighScores', JSON.stringify(highScores.slice(0, 10)));
+    }
+
+    function showResult() {
+      const percentage = Math.round((score / questions.length) * 100);
+      saveHighScore(percentage);
+      let html = `<div class="text-center py-12">
+        <div class="text-8xl mb-6">${percentage >= 80 ? '🏆' : '🎖️'}</div>
+        <h2 class="text-4xl font-bold mb-3">測驗完成！</h2>
+        <p class="text-7xl font-bold text-indigo-600">${score}/${questions.length}</p>
+        <p class="text-3xl text-gray-600">${percentage}% 正確率</p>`;
+      if (wrongQuestions.length > 0) html += `<button onclick="startReview()" class="mt-8 w-full py-6 bg-orange-500 text-white rounded-3xl text-2xl">重練錯題 (${wrongQuestions.length}題)</button>`;
+      html += `<button onclick="goHome()" class="mt-4 w-full py-6 bg-indigo-600 text-white rounded-3xl text-2xl">回到主頁</button></div>`;
+      document.getElementById('quiz-container').innerHTML = html;
+    }
+
+    window.showLeaderboard = function() {
+      const scores = JSON.parse(localStorage.getItem('idiomHighScores') || '[]');
+      let html = `<div class="text-center py-8"><h2 class="text-3xl font-bold mb-6">🏅 排行榜</h2>`;
+      if (scores.length === 0) {
+        html += `<p class="text-gray-500 py-12">還沒有紀錄，快去挑戰吧！</p>`;
+      } else {
+        html += `<div class="space-y-3">`;
+        scores.forEach((r, i) => html += `<div class="bg-white p-4 rounded-2xl flex justify-between"><span>${i+1}. ${r.score}%（${r.unit}單元）</span><span class="text-sm text-gray-500">${r.date}</span></div>`);
+        html += `</div>`;
+      }
+      html += `<button onclick="goHome()" class="mt-8 w-full py-5 bg-indigo-600 text-white rounded-3xl">返回</button></div>`;
+      document.getElementById('quiz-container').innerHTML = html;
+    };
+
+    window.startReview = function() {
+      questions = shuffle([...wrongQuestions]);
+      current = 0; score = 0; wrongQuestions = [];
+      loadQuestion();
+    };
+
+    window.onload = loadQuestions;
+  </script>
+</body>
+</html>

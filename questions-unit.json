@@ -1,0 +1,785 @@
+[
+  {
+    "id": 1,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄅㄛ」這個注音的正確漢字是？",
+    "options": ["波", "坡", "潑", "破"],
+    "answer": 0,
+    "explanation": "ㄅㄛ 的正確漢字是「波」。"
+  },
+  {
+    "id": 2,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄆㄧㄠ」這個注音應該怎麼寫？",
+    "options": ["飄", "漂", "票", "彪"],
+    "answer": 0,
+    "explanation": "ㄆㄧㄠ 的正確漢字是「飄」。"
+  },
+  {
+    "id": 3,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄇㄧㄠˇ」？",
+    "options": ["秒", "苗", "描", "妙"],
+    "answer": 0,
+    "explanation": "「秒」的注音是 ㄇㄧㄠˇ。"
+  },
+  {
+    "id": 4,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄈㄢˋ」這個注音的正確漢字是？",
+    "options": ["飯", "犯", "範", "泛"],
+    "answer": 0,
+    "explanation": "ㄈㄢˋ 最常見的字是「飯」。"
+  },
+  {
+    "id": 5,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄉㄧㄥ」這個注音的正確漢字是？",
+    "options": ["叮", "丁", "頂", "定"],
+    "answer": 0,
+    "explanation": "ㄉㄧㄥ 的正確漢字是「叮」。"
+  },
+  {
+    "id": 6,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄊㄨㄥˊ」？",
+    "options": ["同", "通", "桶", "痛"],
+    "answer": 0,
+    "explanation": "「同」的注音是 ㄊㄨㄥˊ。"
+  },
+  {
+    "id": 7,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄋㄧㄠˇ」這個注音的正確漢字是？",
+    "options": ["鳥", "尿", "嬲", "淼"],
+    "answer": 0,
+    "explanation": "ㄋㄧㄠˇ 的正確漢字是「鳥」。"
+  },
+  {
+    "id": 8,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄌㄧㄡˊ」？",
+    "options": ["流", "留", "劉", "柳"],
+    "answer": 0,
+    "explanation": "「流」的注音是 ㄌㄧㄡˊ。"
+  },
+  {
+    "id": 9,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄍㄨㄛ」這個注音的正確漢字是？",
+    "options": ["鍋", "國", "果", "過"],
+    "answer": 0,
+    "explanation": "ㄍㄨㄛ 的正確漢字是「鍋」。"
+  },
+  {
+    "id": 10,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄎㄨㄢ」這個注音的正確漢字是？",
+    "options": ["寬", "款", "髖", "框"],
+    "answer": 0,
+    "explanation": "ㄎㄨㄢ 的正確漢字是「寬」。"
+  },
+  {
+    "id": 11,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄏㄨㄟˋ」？",
+    "options": ["會", "回", "灰", "慧"],
+    "answer": 0,
+    "explanation": "「會」的注音是 ㄏㄨㄟˋ。"
+  },
+  {
+    "id": 12,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄐㄧㄣ」這個注音的正確漢字是？",
+    "options": ["金", "斤", "今", "進"],
+    "answer": 0,
+    "explanation": "ㄐㄧㄣ 的正確漢字是「金」。"
+  },
+  {
+    "id": 13,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄑㄧㄥ」這個注音的正確漢字是？",
+    "options": ["青", "清", "情", "晴"],
+    "answer": 0,
+    "explanation": "ㄑㄧㄥ 的正確漢字是「青」。"
+  },
+  {
+    "id": 14,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄒㄧㄥˊ」？",
+    "options": ["行", "形", "型", "醒"],
+    "answer": 0,
+    "explanation": "「行」的注音是 ㄒㄧㄥˊ。"
+  },
+  {
+    "id": 15,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄓㄨㄥ」這個注音的正確漢字是？",
+    "options": ["中", "鐘", "忠", "終"],
+    "answer": 0,
+    "explanation": "ㄓㄨㄥ 的正確漢字是「中」。"
+  },
+  {
+    "id": 16,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄔㄨㄢˊ」這個注音的正確漢字是？",
+    "options": ["船", "傳", "川", "穿"],
+    "answer": 0,
+    "explanation": "ㄔㄨㄢˊ 的正確漢字是「船」。"
+  },
+  {
+    "id": 17,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄕㄨㄟˇ」？",
+    "options": ["水", "睡", "誰", "稅"],
+    "answer": 0,
+    "explanation": "「水」的注音是 ㄕㄨㄟˇ。"
+  },
+  {
+    "id": 18,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄖㄣˊ」這個注音的正確漢字是？",
+    "options": ["人", "仁", "任", "忍"],
+    "answer": 0,
+    "explanation": "ㄖㄣˊ 的正確漢字是「人」。"
+  },
+  {
+    "id": 19,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄗㄨㄛˋ」這個注音的正確漢字是？",
+    "options": ["坐", "做", "左", "座"],
+    "answer": 0,
+    "explanation": "ㄗㄨㄛˋ 的正確漢字是「坐」。"
+  },
+  {
+    "id": 20,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄘㄞˇ」？",
+    "options": ["彩", "菜", "採", "猜"],
+    "answer": 0,
+    "explanation": "「彩」的注音是 ㄘㄞˇ。"
+  },
+  {
+    "id": 21,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄙㄨㄣ」這個注音的正確漢字是？",
+    "options": ["孫", "損", "筍", "飧"],
+    "answer": 0,
+    "explanation": "ㄙㄨㄣ 的正確漢字是「孫」。"
+  },
+  {
+    "id": 22,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄧㄢˊ」這個注音的正確漢字是？",
+    "options": ["言", "顏", "嚴", "鹽"],
+    "answer": 0,
+    "explanation": "ㄧㄢˊ 的正確漢字是「言」。"
+  },
+  {
+    "id": 23,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄨㄣˊ」？",
+    "options": ["文", "聞", "蚊", "穩"],
+    "answer": 0,
+    "explanation": "「文」的注音是 ㄨㄣˊ。"
+  },
+  {
+    "id": 24,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄩㄥˇ」這個注音的正確漢字是？",
+    "options": ["永", "泳", "勇", "湧"],
+    "answer": 0,
+    "explanation": "ㄩㄥˇ 的正確漢字是「永」。"
+  },
+  {
+    "id": 25,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄦˊ」這個注音的正確漢字是？",
+    "options": ["兒", "而", "耳", "二"],
+    "answer": 0,
+    "explanation": "ㄦˊ 的正確漢字是「兒」。"
+  },
+  {
+    "id": 26,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄓㄣ」這個注音的正確漢字是？",
+    "options": ["真", "針", "珍", "鎮"],
+    "answer": 0,
+    "explanation": "ㄓㄣ 的正確漢字是「真」。"
+  },
+  {
+    "id": 27,
+    "unit": 1,
+    "category": "phonics",
+    "question": "下列哪個字的注音是「ㄔㄥˊ」？",
+    "options": ["成", "城", "程", "乘"],
+    "answer": 0,
+    "explanation": "「成」的注音是 ㄔㄥˊ。"
+  },
+  {
+    "id": 28,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄕㄥ」這個注音的正確漢字是？",
+    "options": ["生", "聲", "升", "勝"],
+    "answer": 0,
+    "explanation": "ㄕㄥ 的正確漢字是「生」。"
+  },
+  {
+    "id": 29,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄖㄨˊ」這個注音的正確漢字是？",
+    "options": ["如", "儒", "乳", "入"],
+    "answer": 0,
+    "explanation": "ㄖㄨˊ 的正確漢字是「如」。"
+  },
+  {
+    "id": 30,
+    "unit": 1,
+    "category": "phonics",
+    "question": "「ㄗㄨㄥ」這個注音的正確漢字是？",
+    "options": ["宗", "棕", "蹤", "總"],
+    "answer": 0,
+    "explanation": "ㄗㄨㄥ 的正確漢字是「宗」。"
+  },
+  {
+    "id": 26,
+    "unit": 6,
+    "category": "story",
+    "question": "「紙上談兵」的主角是誰？",
+    "options": ["趙括", "廉頗", "白起", "王翦"],
+    "answer": 0,
+    "explanation": "趙括只會紙上談兵，導致長平之戰大敗。"
+  },
+  {
+    "id": 27,
+    "unit": 6,
+    "category": "story",
+    "question": "「圍魏救趙」的典故出自？",
+    "options": ["孫臏", "孫武", "龐涓", "吳起"],
+    "answer": 0,
+    "explanation": "孫臏用圍攻魏國首都的方法解救趙國。"
+  },
+  {
+    "id": 28,
+    "unit": 6,
+    "category": "story",
+    "question": "「背水一戰」是哪位將領的策略？",
+    "options": ["韓信", "項羽", "劉邦", "諸葛亮"],
+    "answer": 0,
+    "explanation": "韓信背水列陣，激勵士兵死戰取勝。"
+  },
+  {
+    "id": 29,
+    "unit": 6,
+    "category": "story",
+    "question": "「火牛陣」是誰的戰術？",
+    "options": ["田單", "孫臏", "樂毅", "廉頗"],
+    "answer": 0,
+    "explanation": "田單用火牛陣大破燕軍，收復失地。"
+  },
+  {
+    "id": 30,
+    "unit": 6,
+    "category": "story",
+    "question": "「退避三舍」是誰對誰的承諾？",
+    "options": ["晉文公對楚成王", "勾踐對夫差", "劉備對曹操", "孫權對劉備"],
+    "answer": 0,
+    "explanation": "晉文公為報答楚國恩情，退兵九十里。"
+  },
+  {
+    "id": 31,
+    "unit": 6,
+    "category": "story",
+    "question": "「毛遂自薦」發生在哪個國家？",
+    "options": ["趙國", "秦國", "楚國", "齊國"],
+    "answer": 0,
+    "explanation": "毛遂在平原君門下自薦出使楚國。"
+  },
+  {
+    "id": 32,
+    "unit": 7,
+    "category": "story",
+    "question": "「赤壁之戰」的主要對手是？",
+    "options": ["曹操 vs 孫劉聯軍", "項羽 vs 劉邦", "苻堅 vs 謝玄", "白起 vs 廉頗"],
+    "answer": 0,
+    "explanation": "曹操大軍被孫權、劉備聯軍擊敗於赤壁。"
+  },
+  {
+    "id": 33,
+    "unit": 7,
+    "category": "story",
+    "question": "「草船借箭」是誰的計謀？",
+    "options": ["諸葛亮", "周瑜", "魯肅", "曹操"],
+    "answer": 0,
+    "explanation": "諸葛亮利用大霧向曹操借箭。"
+  },
+  {
+    "id": 34,
+    "unit": 7,
+    "category": "story",
+    "question": "「空城計」是誰使用的策略？",
+    "options": ["諸葛亮", "司馬懿", "周瑜", "曹操"],
+    "answer": 0,
+    "explanation": "諸葛亮在西城唱空城計嚇退司馬懿。"
+  },
+  {
+    "id": 35,
+    "unit": 7,
+    "category": "story",
+    "question": "「刮骨療毒」的主角是？",
+    "options": ["關羽", "張飛", "趙雲", "馬超"],
+    "answer": 0,
+    "explanation": "關羽中毒箭，仍讓華佗刮骨療毒。"
+  },
+  {
+    "id": 36,
+    "unit": 7,
+    "category": "story",
+    "question": "「單刀赴會」是誰的英勇事蹟？",
+    "options": ["關羽", "張飛", "趙雲", "黃忠"],
+    "answer": 0,
+    "explanation": "關羽單刀赴魯肅之會，展現英雄氣概。"
+  },
+  {
+    "id": 37,
+    "unit": 8,
+    "category": "story",
+    "question": "「望梅止渴」是哪位人物的故事？",
+    "options": ["曹操", "劉備", "孫權", "諸葛亮"],
+    "answer": 0,
+    "explanation": "曹操用「前面有梅林」鼓舞士兵前進。"
+  },
+  {
+    "id": 38,
+    "unit": 8,
+    "category": "story",
+    "question": "「東山再起」的主角是？",
+    "options": ["謝安", "諸葛亮", "范蠡", "廉頗"],
+    "answer": 0,
+    "explanation": "謝安隱居東山後再度出仕。"
+  },
+  {
+    "id": 39,
+    "unit": 8,
+    "category": "story",
+    "question": "「聞雞起舞」是誰和誰的故事？",
+    "options": ["祖逖和劉琨", "項羽和劉邦", "孫臏和龐涓", "廉頗和藺相如"],
+    "answer": 0,
+    "explanation": "祖逖與劉琨聞雞起舞，激勵志氣。"
+  },
+  {
+    "id": 40,
+    "unit": 8,
+    "category": "story",
+    "question": "「精忠報國」是哪位名將？",
+    "options": ["岳飛", "文天祥", "戚繼光", "袁崇煥"],
+    "answer": 0,
+    "explanation": "岳飛背上刺有『精忠報國』四字。"
+  },
+  {
+    "id": 41,
+    "unit": 8,
+    "category": "story",
+    "question": "「木人石心」形容誰？",
+    "options": ["石崇", "王導", "謝安", "桓溫"],
+    "answer": 3,
+    "explanation": "桓溫心志堅定如木石，不為美色所動。"
+  },
+  {
+    "id": 42,
+    "unit": 9,
+    "category": "story",
+    "question": "「程門立雪」是誰尊師重道的典故？",
+    "options": ["楊時", "朱熹", "程頤", "蘇軾"],
+    "answer": 0,
+    "explanation": "楊時和游酢在雪中站立等候老師程頤。"
+  },
+  {
+    "id": 43,
+    "unit": 9,
+    "category": "story",
+    "question": "「囊螢映雪」是誰苦讀的故事？",
+    "options": ["車胤和孫康", "匡衡", "蘇秦", "李白"],
+    "answer": 0,
+    "explanation": "車胤用囊螢、孫康用映雪來照明讀書。"
+  },
+  {
+    "id": 44,
+    "unit": 9,
+    "category": "story",
+    "question": "「懸梁刺股」是誰的苦讀精神？",
+    "options": ["蘇秦", "孫敬", "車胤", "匡衡"],
+    "answer": 0,
+    "explanation": "蘇秦用錐刺股、孫敬用繩懸梁來防打瞌睡。"
+  },
+  {
+    "id": 45,
+    "unit": 9,
+    "category": "story",
+    "question": "「鑿壁偷光」的主角是？",
+    "options": ["匡衡", "車胤", "孫康", "祖逖"],
+    "answer": 0,
+    "explanation": "匡衡家貧，鑿穿牆壁借鄰居燈光讀書。"
+  },
+  {
+    "id": 46,
+    "unit": 9,
+    "category": "story",
+    "question": "「鐵杵磨成針」是誰的故事？",
+    "options": ["李白", "杜甫", "白居易", "王維"],
+    "answer": 0,
+    "explanation": "李白小時候遇老婆婆磨鐵杵，受到啟發。"
+  },
+  {
+    "id": 47,
+    "unit": 10,
+    "category": "story",
+    "question": "「司馬光砸缸」救了誰？",
+    "options": ["小朋友", "自己", "司馬光", "朋友的弟弟"],
+    "answer": 0,
+    "explanation": "司馬光小時候砸破水缸救出落水的小朋友。"
+  },
+  {
+    "id": 48,
+    "unit": 10,
+    "category": "story",
+    "question": "「曹沖稱象」是誰想出的辦法？",
+    "options": ["曹沖", "曹操", "曹植", "曹丕"],
+    "answer": 0,
+    "explanation": "曹沖用船和石頭的原理稱出大象重量。"
+  },
+  {
+    "id": 49,
+    "unit": 10,
+    "category": "story",
+    "question": "「孔融讓梨」發生在幾歲？",
+    "options": ["4歲", "7歲", "10歲", "12歲"],
+    "answer": 0,
+    "explanation": "孔融4歲時就懂得讓梨給哥哥。"
+  },
+  {
+    "id": 50,
+    "unit": 10,
+    "category": "story",
+    "question": "「黃香溫席」是為了孝順？",
+    "options": ["父親", "母親", "祖母", "老師"],
+    "answer": 0,
+    "explanation": "黃香夏天扇涼席子、冬天溫暖被窩孝順父親。"
+  },
+  {
+    "id": 51,
+    "unit": 10,
+    "category": "story",
+    "question": "「陸績懷橘」是為了？",
+    "options": ["帶給母親", "自己吃", "送給朋友", "孝順老師"],
+    "answer": 0,
+    "explanation": "陸績在袁術家把橘子藏在懷裡要帶給母親。"
+  },
+  {
+    "id": 52,
+    "unit": 10,
+    "category": "story",
+    "question": "「王戎識李」體現了什麼？",
+    "options": ["聰明機智", "仁慈", "勇敢", "孝順"],
+    "answer": 0,
+    "explanation": "王戎小時候就知道路邊的李子是苦的。"
+  },
+{
+    "id": 53,
+    "unit": 11,
+    "category": "story",
+    "question": "「負荊請罪」是誰向誰請罪？",
+    "options": ["廉頗向藺相如", "藺相如向廉頗", "項羽向劉邦", "諸葛亮向劉備"],
+    "answer": 0,
+    "explanation": "廉頗知道自己錯了，背著荊條向藺相如請罪。"
+  },
+  {
+    "id": 54,
+    "unit": 11,
+    "category": "story",
+    "question": "「完璧歸趙」是誰的功勞？",
+    "options": ["藺相如", "廉頗", "趙王", "秦始皇"],
+    "answer": 0,
+    "explanation": "藺相如智勇雙全將和氏璧完整帶回趙國。"
+  },
+  {
+    "id": 55,
+    "unit": 11,
+    "category": "story",
+    "question": "「將相和」指的是哪兩位？",
+    "options": ["廉頗和藺相如", "項羽和劉邦", "孫權和劉備", "曹操和諸葛亮"],
+    "answer": 0,
+    "explanation": "廉頗與藺相如和好，共同保衛趙國。"
+  },
+  {
+    "id": 56,
+    "unit": 11,
+    "category": "story",
+    "question": "「圖窮匕見」的主角是？",
+    "options": ["荊軻", "聶政", "專諸", "要離"],
+    "answer": 0,
+    "explanation": "荊軻刺秦王，地圖展開後露出匕首。"
+  },
+  {
+    "id": 57,
+    "unit": 11,
+    "category": "story",
+    "question": "「一字千金」修改的是誰的文章？",
+    "options": ["呂不韋", "司馬遷", "班固", "韓非"],
+    "answer": 0,
+    "explanation": "呂不韋《呂氏春秋》懸賞修改一字給千金。"
+  },
+  {
+    "id": 58,
+    "unit": 11,
+    "category": "story",
+    "question": "「信陵君竊符救趙」中的信陵君名叫？",
+    "options": ["魏無忌", "魏公子", "平原君", "春申君"],
+    "answer": 0,
+    "explanation": "信陵君魏無忌偷取兵符救趙國。"
+  },
+  {
+    "id": 59,
+    "unit": 12,
+    "category": "story",
+    "question": "「臥薪嘗膽」是哪國國王的故事？",
+    "options": ["越王勾踐", "吳王夫差", "楚莊王", "齊桓公"],
+    "answer": 0,
+    "explanation": "勾踐被夫差打敗後，臥薪嘗膽以圖復國。"
+  },
+  {
+    "id": 60,
+    "unit": 12,
+    "category": "story",
+    "question": "「三千越甲可吞吳」出自？",
+    "options": ["越王勾踐", "伍子胥", "孫武", "范蠡"],
+    "answer": 0,
+    "explanation": "勾踐勵精圖治，最終滅掉吳國。"
+  },
+  {
+    "id": 61,
+    "unit": 12,
+    "category": "story",
+    "question": "「范蠡泛舟五湖」是為了？",
+    "options": ["隱退避禍", "經商致富", "遊山玩水", "尋找仙人"],
+    "answer": 0,
+    "explanation": "幫助勾踐復國後，范蠡功成身退。"
+  },
+  {
+    "id": 62,
+    "unit": 12,
+    "category": "story",
+    "question": "「西施浣紗」與哪位美女有關？",
+    "options": ["西施", "貂蟬", "王昭君", "楊玉環"],
+    "answer": 0,
+    "explanation": "西施是中國古代四大美女之一。"
+  },
+  {
+    "id": 63,
+    "unit": 12,
+    "category": "story",
+    "question": "「臥薪嘗膽」中的「膽」是指？",
+    "options": ["苦膽", "肝膽", "蛇膽", "熊膽"],
+    "answer": 0,
+    "explanation": "勾踐每天嘗苦膽以提醒自己勿忘國恥。"
+  },
+  {
+    "id": 64,
+    "unit": 12,
+    "category": "story",
+    "question": "「吳越同舟」比喻？",
+    "options": ["同舟共濟", "敵對關係", "互相利用", "勢不兩立"],
+    "answer": 0,
+    "explanation": "即使是敵人，在危難時也要互相幫助。"
+  },
+  {
+    "id": 65,
+    "unit": 13,
+    "category": "story",
+    "question": "「伯牙摔琴」是為了誰？",
+    "options": ["鍾子期", "俞伯牙", "管仲", "鮑叔牙"],
+    "answer": 0,
+    "explanation": "知音鍾子期去世後，伯牙摔琴不再彈奏。"
+  },
+  {
+    "id": 66,
+    "unit": 13,
+    "category": "story",
+    "question": "「高山流水」形容什麼？",
+    "options": ["知音難覓", "音樂優美", "山水風景", "友情深厚"],
+    "answer": 0,
+    "explanation": "比喻知音難得的深厚友情。"
+  },
+  {
+    "id": 67,
+    "unit": 13,
+    "category": "story",
+    "question": "「管鮑之交」指的是？",
+    "options": ["管仲和鮑叔牙", "伯牙和子期", "廉頗和藺相如", "桃園三結義"],
+    "answer": 0,
+    "explanation": "中國古代最著名的生死之交。"
+  },
+  {
+    "id": 68,
+    "unit": 13,
+    "category": "story",
+    "question": "「桃園三結義」是哪三位？",
+    "options": ["劉備、關羽、張飛", "曹操、劉備、孫權", "項羽、劉邦、韓信", "諸葛亮、周瑜、魯肅"],
+    "answer": 0,
+    "explanation": "劉備、關羽、張飛在桃園結義。"
+  },
+  {
+    "id": 69,
+    "unit": 13,
+    "category": "story",
+    "question": "「三顧茅廬」請的是誰？",
+    "options": ["諸葛亮", "龐統", "徐庶", "司馬徽"],
+    "answer": 0,
+    "explanation": "劉備三次拜訪諸葛亮，請他出山。"
+  },
+  {
+    "id": 70,
+    "unit": 13,
+    "category": "story",
+    "question": "「隆中對」是誰提出的策略？",
+    "options": ["諸葛亮", "劉備", "關羽", "張飛"],
+    "answer": 0,
+    "explanation": "諸葛亮為劉備分析天下大勢。"
+  },
+  {
+    "id": 71,
+    "unit": 14,
+    "category": "story",
+    "question": "「徐庶走馬薦諸葛」中的徐庶後來如何？",
+    "options": ["被曹操軟禁", "戰死沙場", "歸隱山林", "投靠孫權"],
+    "answer": 0,
+    "explanation": "徐庶因母親被曹操所擄，只好留在曹營。"
+  },
+  {
+    "id": 72,
+    "unit": 14,
+    "category": "story",
+    "question": "「火燒新野」是誰的計謀？",
+    "options": ["諸葛亮", "劉備", "趙雲", "張飛"],
+    "answer": 0,
+    "explanation": "諸葛亮用火攻大敗曹軍。"
+  },
+  {
+    "id": 73,
+    "unit": 14,
+    "category": "story",
+    "question": "「長坂坡」中誰單騎救主？",
+    "options": ["趙雲", "張飛", "關羽", "黃忠"],
+    "answer": 0,
+    "explanation": "趙雲在長坂坡七進七出救出阿斗。"
+  },
+  {
+    "id": 74,
+    "unit": 14,
+    "category": "story",
+    "question": "「張飛喝斷長坂橋」喝退了誰？",
+    "options": ["曹軍", "孫權軍", "劉表軍", "袁紹軍"],
+    "answer": 0,
+    "explanation": "張飛一聲大喝嚇退曹軍。"
+  },
+  {
+    "id": 75,
+    "unit": 14,
+    "category": "story",
+    "question": "「趙雲截江救阿斗」發生在？",
+    "options": ["孫夫人帶阿斗回吳國時", "赤壁之戰", "長坂坡", "取西川時"],
+    "answer": 0,
+    "explanation": "趙雲從孫夫人手中救回阿斗。"
+  },
+  {
+    "id": 76,
+    "unit": 14,
+    "category": "story",
+    "question": "「借東風」是誰的法術？",
+    "options": ["諸葛亮", "周瑜", "魯肅", "龐統"],
+    "answer": 0,
+    "explanation": "諸葛亮借東風助周瑜火燒赤壁。"
+  },
+  {
+    "id": 77,
+    "unit": 15,
+    "category": "story",
+    "question": "「七擒七縱」是誰對誰？",
+    "options": ["諸葛亮對孟獲", "曹操對袁紹", "孫權對劉備", "項羽對劉邦"],
+    "answer": 0,
+    "explanation": "諸葛亮七次擒拿孟獲又七次放了他。"
+  },
+  {
+    "id": 78,
+    "unit": 15,
+    "category": "story",
+    "question": "「失街亭」是誰的責任？",
+    "options": ["馬謖", "諸葛亮", "魏延", "王平"],
+    "answer": 0,
+    "explanation": "馬謖違背軍令失守街亭。"
+  },
+  {
+    "id": 79,
+    "unit": 15,
+    "category": "story",
+    "question": "「空城計」發生在哪一戰？",
+    "options": ["街亭之戰", "赤壁之戰", "夷陵之戰", "六出祁山"],
+    "answer": 0,
+    "explanation": "諸葛亮在街亭失守後使用空城計。"
+  },
+  {
+    "id": 80,
+    "unit": 15,
+    "category": "story",
+    "question": "「六出祁山」是誰的北伐？",
+    "options": ["諸葛亮", "姜維", "魏延", "司馬懿"],
+    "answer": 0,
+    "explanation": "諸葛亮六次北伐曹魏。"
+  },
+  {
+    "id": 81,
+    "unit": 15,
+    "category": "story",
+    "question": "「鞠躬盡瘁，死而後已」是誰說的？",
+    "options": ["諸葛亮", "劉備", "關羽", "岳飛"],
+    "answer": 0,
+    "explanation": "諸葛亮在《後出師表》中的名句。"
+  },
+  {
+    "id": 82,
+    "unit": 15,
+    "category": "story",
+    "question": "「五丈原」諸葛亮最終病逝於？",
+    "options": ["五丈原", "祁山", "街亭", "成都"],
+    "answer": 0,
+    "explanation": "諸葛亮在五丈原病逝，北伐未成。"
+  }
+]

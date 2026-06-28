@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>六年級成語達人</title>
+  <title>陳樵國語文</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -11,8 +11,8 @@
     .option-btn { 
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
       padding: 0.5rem; /* 按鈕的內邊距 */
-      font-size: 1rem; /* 按鈕字體大小 */
-      min-height: 50px; /* 設定最小高度 */
+      font-size: 0.9rem; /* 按鈕字體大小縮小 */
+      min-height: 40px; /* 設定最小高度 */
       display: flex; /* 使用 flex 使內容居中 */
       align-items: center; /* 垂直居中 */
     }
@@ -37,13 +37,17 @@
     .feedback p {
       font-size: 1rem; /* 確保答對/答錯的字體大小與一般字體一致 */
     }
+    h1 { font-size: 2rem; } /* 縮小標題字體大小 */
   </style>
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-white to-rose-50 min-h-screen pb-12">
   <div class="max-w-2xl mx-auto p-4">
     <div class="flex justify-between items-center mb-8">
       <h1 class="text-4xl font-bold text-indigo-700">📝 六年級國語文</h1>
-      <div class="flex gap-3" id="header-buttons"></div>
+      <div class="flex gap-3" id="header-buttons">
+        <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm">排行榜</button>
+        <button onclick="goHome()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm">回主頁</button>
+      </div>
     </div>
     <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl min-h-[520px]"></div>
   </div>
@@ -83,13 +87,13 @@
       const container = document.getElementById('header-buttons');
       if (isMainPage) {
         container.innerHTML = `
-          <button onclick="showLeaderboard()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">排行榜</button>
-          <button onclick="exitProgram()" class="px-5 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50">結束</button>
+          <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm">排行榜</button>
+          <button onclick="exitProgram()" class="px-3 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50 text-sm">結束</button>
         `;
       } else {
         container.innerHTML = `
-          <button onclick="showLeaderboard()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">排行榜</button>
-          <button onclick="goHome()" class="px-5 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50">← 回主頁</button>
+          <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm">排行榜</button>
+          <button onclick="goHome()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm">← 回主頁</button>
         `;
       }
     }
@@ -167,7 +171,7 @@
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = Math.random() * 100 + 'vw';
-        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55f'][Math.floor(Math.random()*5)];
+        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55e'][Math.floor(Math.random()*5)];
         c.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
         c.style.top = '0'; // 設定紙花從上方開始
         document.body.appendChild(c);

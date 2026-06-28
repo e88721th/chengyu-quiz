@@ -19,21 +19,6 @@
     .option-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; animation: fall 3s linear forwards; }
     @keyframes fall { to { transform: translateY(800px) rotate(720deg); opacity: 0; } }
-    .firework { 
-      position: absolute; 
-      width: 5px; 
-      height: 5px; 
-      border-radius: 50%; 
-      animation: launch 1s forwards, explode 0.5s forwards; 
-    }
-    @keyframes launch {
-      0% { transform: translateY(100vh); opacity: 1; }
-      100% { transform: translateY(-300px); opacity: 1; }
-    }
-    @keyframes explode {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(5); opacity: 0; }
-    }
     #quiz-container { 
       max-height: 80vh; 
       overflow-y: auto; /* 添加垂直滾動條 */
@@ -182,25 +167,12 @@
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = Math.random() * 100 + 'vw';
-        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55e'][Math.floor(Math.random()*5)];
+        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55f'][Math.floor(Math.random()*5)];
         c.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
         c.style.top = '0'; // 設定紙花從上方開始
         document.body.appendChild(c);
         setTimeout(() => c.remove(), 7000);
       }
-    }
-
-    function createFirework() {
-      const firework = document.createElement('div');
-      firework.className = 'firework';
-      firework.style.left = Math.random() * 100 + 'vw';
-      firework.style.bottom = '0'; // 煙花從下方開始
-      firework.style.backgroundColor = ['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff'][Math.floor(Math.random()*5)];
-      document.body.appendChild(firework);
-      setTimeout(() => {
-        firework.style.animation = 'explode 0.5s forwards';
-        setTimeout(() => firework.remove(), 500);
-      }, 1000); // 上升時間
     }
 
     function loadQuestion() {
@@ -234,18 +206,8 @@
       clearInterval(timerInterval);
       const q = questions[current];
       const isCorrect = selected === q.currentCorrectIndex;
-      if (isCorrect) { 
-        score++; 
-        playSound(true); 
-        if ((current + 1) % 5 === 0) { // 每5題答對時放煙花
-          createFirework(); 
-        } else {
-          createConfetti(); 
-        }
-      } else { 
-        wrongQuestions.push(q); 
-        playSound(false); 
-      }
+      if (isCorrect) { score++; playSound(true); createConfetti(); }
+      else { wrongQuestions.push(q); playSound(false); }
 
       const feedback = document.getElementById('feedback');
       feedback.classList.remove('hidden');
@@ -318,4 +280,7 @@
       loadQuestion();
     };
 
-   
+    window.onload = loadQuestions;
+  </script>
+</body>
+</html>

@@ -8,10 +8,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Noto Sans TC', system-ui, sans-serif; }
-    .option-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .option-btn { 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      padding: 0.5rem; /* 按鈕的內邊距 */
+      font-size: 1rem; /* 按鈕字體大小 */
+      min-height: 50px; /* 設定最小高度 */
+      display: flex; /* 使用 flex 使內容居中 */
+      align-items: center; /* 垂直居中 */
+    }
     .option-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; animation: fall 3s linear forwards; }
     @keyframes fall { to { transform: translateY(800px) rotate(720deg); opacity: 0; } }
+    #quiz-container { 
+      max-height: 80vh; 
+      overflow-y: auto; /* 添加垂直滾動條 */
+      padding: 1rem; /* 內邊距 */
+    }
+    #timer { font-size: 1.5rem; }
+    .question { 
+      font-size: 1.25rem; /* 調整題目字體大小 */
+      margin-bottom: 0.5rem; /* 縮小題目底部間距 */
+    }
+    .feedback {
+      padding: 0.5rem; /* 調整解答區域的內邊距 */
+      font-size: 1rem; /* 調整解答區域的字體大小 */
+      margin-bottom: 0.5rem; /* 縮小解答區域與下一題區域的間距 */
+    }
+    .feedback p {
+      font-size: 1rem; /* 確保答對/答錯的字體大小與一般字體一致 */
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-white to-rose-50 min-h-screen pb-12">
@@ -20,7 +45,7 @@
       <h1 class="text-4xl font-bold text-indigo-700">🀄 六年級成語達人</h1>
       <div class="flex gap-3" id="header-buttons"></div>
     </div>
-    <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl p-8 min-h-[520px]"></div>
+    <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl min-h-[520px]"></div>
   </div>
 
   <script>
@@ -31,7 +56,6 @@
     let score = 0;
     let timerInterval;
     let timeLeft = 30;
-    let currentUnit = null;
 
     async function loadQuestions() {
       try {
@@ -50,7 +74,7 @@
           <div class="text-7xl mb-6">📖</div>
           <h1 class="text-4xl font-bold text-indigo-700 mb-3">六年級成語達人</h1>
           <p class="text-xl text-gray-600 mb-10">注音 + 故事成語 綜合練習</p>
-          <button onclick="showUnitSelection()" class="w-full py-7 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-medium rounded-3xl shadow-xl">開始測驗</button>
+          <button onclick="showUnitSelection()" class="w-full py-5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-medium rounded-3xl shadow-xl">開始測驗</button>
         </div>
       `;
     }
@@ -95,7 +119,6 @@
     }
 
     function startUnit(unitNumber) {
-      currentUnit = unitNumber;
       questions = shuffle(allQuestions.filter(q => q.unit === unitNumber));
       if (questions.length === 0) return alert("此單元尚無題目");
       current = 0; score = 0; wrongQuestions = [];
@@ -104,7 +127,6 @@
     }
 
     function startAllUnits() {
-      currentUnit = null;
       questions = shuffle([...allQuestions]);
       current = 0; score = 0; wrongQuestions = [];
       updateHeaderButtons(false);
@@ -145,7 +167,7 @@
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = Math.random() * 100 + 'vw';
-        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55e'][Math.floor(Math.random()*5)];
+        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55f'][Math.floor(Math.random()*5)];
         c.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
         document.body.appendChild(c);
         setTimeout(() => c.remove(), 7000);
@@ -166,18 +188,17 @@
         <div class="h-2 bg-gray-100 rounded-full mb-8 overflow-hidden">
           <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all" style="width:0%"></div>
         </div>
-        <div class="text-2xl font-medium leading-relaxed mb-10">${current + 1}. ${q.question}</div>
-        <div class="grid grid-cols-1 gap-4">
+        <div class="question text-2xl font-medium leading-relaxed mb-2">${current + 1}. ${q.question}</div>
+        <div class="grid grid-cols-1 gap-2">
           ${shuffledOptions.map((opt,i) => `
-            <button onclick="selectAnswer(${i})" class="option-btn w-full text-left px-8 py-6 bg-gradient-to-r from-gray-50 to-white hover:from-indigo-50 border border-gray-200 rounded-3xl text-xl shadow">
+            <button onclick="selectAnswer(${i})" class="option-btn w-full text-left px-8 py-4 bg-gradient-to-r from-gray-50 to-white hover:from-indigo-50 border border-gray-200 rounded-3xl text-xl shadow">
               ${String.fromCharCode(65+i)}. ${opt}
             </button>`).join('')}
         </div>
-        <div id="feedback" class="mt-10 hidden"></div>
-        <button onclick="goHome()" class="mt-6 w-full py-3 text-gray-500 hover:text-red-600">← 中途返回主頁</button>
+        <div id="feedback" class="mt-4 hidden"></div>
       `;
       updateProgress();
-      startTimer();   // ← 確保每次載入題目都會啟動計時器
+      startTimer();   // 確保每次載入題目都會啟動計時器
     }
 
     window.selectAnswer = function(selected) {
@@ -190,11 +211,11 @@
       const feedback = document.getElementById('feedback');
       feedback.classList.remove('hidden');
       feedback.innerHTML = `
-        <div class="p-8 rounded-3xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
-          <p class="text-3xl font-bold mb-4">${isCorrect ? '🎉 答對了！' : '😔 答錯了'}</p>
-          <p class="text-xl">${q.explanation}</p>
+        <div class="p-4 rounded-3xl ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+          <p class="text-xl font-bold mb-2">${isCorrect ? '🎉 答對了！' : '😔 答錯了'}</p>
+          <p class="text-base">${q.explanation}</p>
         </div>
-        <button onclick="nextQuestion()" class="mt-8 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-3xl text-2xl font-medium">
+        <button onclick="nextQuestion()" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-3xl text-xl font-medium">
           ${current < questions.length-1 ? '下一題 →' : '查看成績'}
         </button>
       `;
@@ -251,20 +272,6 @@
       html += `<button onclick="goHome()" class="mt-4 w-full py-6 bg-indigo-600 text-white rounded-3xl text-2xl">回到主頁</button></div>`;
       document.getElementById('quiz-container').innerHTML = html;
     }
-
-    window.showLeaderboard = function() {
-      const scores = JSON.parse(localStorage.getItem('idiomHighScores') || '[]');
-      let html = `<div class="text-center py-8"><h2 class="text-3xl font-bold mb-6">🏅 排行榜</h2>`;
-      if (scores.length === 0) {
-        html += `<p class="text-gray-500 py-12">還沒有紀錄，快去挑戰吧！</p>`;
-      } else {
-        html += `<div class="space-y-3">`;
-        scores.forEach((r, i) => html += `<div class="bg-white p-4 rounded-2xl flex justify-between"><span>${i+1}. ${r.score}%（${r.unit}單元）</span><span class="text-sm text-gray-500">${r.date}</span></div>`);
-        html += `</div>`;
-      }
-      html += `<button onclick="goHome()" class="mt-8 w-full py-5 bg-indigo-600 text-white rounded-3xl">返回</button></div>`;
-      document.getElementById('quiz-container').innerHTML = html;
-    };
 
     window.startReview = function() {
       questions = shuffle([...wrongQuestions]);

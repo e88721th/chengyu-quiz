@@ -19,6 +19,21 @@
     .option-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     .confetti { position: absolute; width: 10px; height: 10px; border-radius: 50%; animation: fall 3s linear forwards; }
     @keyframes fall { to { transform: translateY(800px) rotate(720deg); opacity: 0; } }
+    .firework { 
+      position: absolute; 
+      width: 5px; 
+      height: 5px; 
+      border-radius: 50%; 
+      animation: launch 1s forwards, explode 0.5s forwards; 
+    }
+    @keyframes launch {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-300px); opacity: 1; }
+    }
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(5); opacity: 0; }
+    }
     #quiz-container { 
       max-height: 80vh; 
       overflow-y: auto; /* 添加垂直滾動條 */
@@ -42,7 +57,7 @@
 <body class="bg-gradient-to-br from-indigo-50 via-white to-rose-50 min-h-screen pb-12">
   <div class="max-w-2xl mx-auto p-4">
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-4xl font-bold text-indigo-700">🀄 六年級成語達人</h1>
+      <h1 class="text-4xl font-bold text-indigo-700">📝 六年級國語文</h1>
       <div class="flex gap-3" id="header-buttons"></div>
     </div>
     <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl min-h-[520px]"></div>
@@ -71,9 +86,9 @@
       updateHeaderButtons(true);
       document.getElementById('quiz-container').innerHTML = `
         <div class="text-center py-16">
-          <div class="text-7xl mb-6">📖</div>
-          <h1 class="text-4xl font-bold text-indigo-700 mb-3">六年級成語達人</h1>
-          <p class="text-xl text-gray-600 mb-10">注音 + 故事成語 綜合練習</p>
+          <div class="text-7xl mb-6">📝</div>
+          <h1 class="text-4xl font-bold text-indigo-700 mb-3">六年級國語文</h1>
+          <p class="text-xl text-gray-600 mb-10">綜合練習</p>
           <button onclick="showUnitSelection()" class="w-full py-5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-medium rounded-3xl shadow-xl">開始測驗</button>
         </div>
       `;
@@ -167,11 +182,25 @@
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = Math.random() * 100 + 'vw';
-        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55f'][Math.floor(Math.random()*5)];
+        c.style.backgroundColor = ['#6366f1','#a855f7','#ec4899','#eab308','#22c55e'][Math.floor(Math.random()*5)];
         c.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
+        c.style.top = '0'; // 設定紙花從上方開始
         document.body.appendChild(c);
         setTimeout(() => c.remove(), 7000);
       }
+    }
+
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = Math.random() * 100 + 'vw';
+      firework.style.bottom = '0'; // 煙花從下方開始
+      firework.style.backgroundColor = ['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff'][Math.floor(Math.random()*5)];
+      document.body.appendChild(firework);
+      setTimeout(() => {
+        firework.style.animation = 'explode 0.5s forwards';
+        setTimeout(() => firework.remove(), 500);
+      }, 1000); // 上升時間
     }
 
     function loadQuestion() {
@@ -205,8 +234,18 @@
       clearInterval(timerInterval);
       const q = questions[current];
       const isCorrect = selected === q.currentCorrectIndex;
-      if (isCorrect) { score++; playSound(true); createConfetti(); }
-      else { wrongQuestions.push(q); playSound(false); }
+      if (isCorrect) { 
+        score++; 
+        playSound(true); 
+        if ((current + 1) % 5 === 0) { // 每5題答對時放煙花
+          createFirework(); 
+        } else {
+          createConfetti(); 
+        }
+      } else { 
+        wrongQuestions.push(q); 
+        playSound(false); 
+      }
 
       const feedback = document.getElementById('feedback');
       feedback.classList.remove('hidden');
@@ -279,7 +318,4 @@
       loadQuestion();
     };
 
-    window.onload = loadQuestions;
-  </script>
-</body>
-</html>
+   

@@ -45,8 +45,9 @@
     <div class="flex justify-between items-center mb-8">
       <h3 class="text-4xl font-bold text-indigo-700">🎓陳樵</h3>
       <div class="flex gap-3" id="header-buttons">
+        <!-- 只在主頁顯示排行榜按鈕 -->
         <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm w-24">排行榜</button>
-        <button onclick="goHome()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm w-24">回主頁</button>
+        <button onclick="exitProgram()" class="px-3 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50 text-sm w-24">結束</button>
       </div>
     </div>
     <div id="quiz-container" class="bg-white rounded-3xl shadow-2xl min-h-[520px]"></div>
@@ -86,14 +87,15 @@
     function updateHeaderButtons(isMainPage) {
       const container = document.getElementById('header-buttons');
       if (isMainPage) {
+        // 只在主頁顯示排行榜按鈕
         container.innerHTML = `
           <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm w-24">排行榜</button>
           <button onclick="exitProgram()" class="px-3 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50 text-sm w-24">結束</button>
         `;
       } else {
+        // 在選單和測驗時隱藏排行榜按鈕
         container.innerHTML = `
-          <button onclick="showLeaderboard()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm w-24">排行榜</button>
-          <button onclick="goHome()" class="px-3 py-2 bg-white rounded-2xl shadow text-indigo-600 hover:bg-indigo-50 text-sm w-24">← 回主頁</button>
+          <button onclick="exitProgram()" class="px-3 py-2 bg-white rounded-2xl shadow text-red-600 hover:bg-red-50 text-sm w-24">結束</button>
         `;
       }
     }
@@ -102,7 +104,7 @@
     function goHome() { if (confirm("返回主頁？")) location.reload(); }
 
     function showUnitSelection() {
-      updateHeaderButtons(true);
+      updateHeaderButtons(false); // 隱藏排行榜按鈕
       let html = `<div class="text-center py-8"><h2 class="text-3xl font-bold mb-8">請選擇測驗單元</h2>`;
       html += `<div class="max-w-xs mx-auto mb-8"><div class="flex gap-3">
         <input id="unitInput" type="number" min="1" max="40" placeholder="輸入單元" class="flex-1 px-5 py-4 border border-gray-300 rounded-2xl text-center text-xl">
@@ -126,14 +128,14 @@
       questions = shuffle(allQuestions.filter(q => q.unit === unitNumber));
       if (questions.length === 0) return alert("此單元尚無題目");
       current = 0; score = 0; wrongQuestions = [];
-      updateHeaderButtons(false);
+      updateHeaderButtons(false); // 隱藏排行榜按鈕
       loadQuestion();
     }
 
     function startAllUnits() {
       questions = shuffle([...allQuestions]);
       current = 0; score = 0; wrongQuestions = [];
-      updateHeaderButtons(false);
+      updateHeaderButtons(false); // 隱藏排行榜按鈕
       loadQuestion();
     }
 
